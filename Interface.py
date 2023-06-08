@@ -10,7 +10,7 @@ from pyqtgraph import PlotWidget
 
 from CommonAlg import CommonAlg
 from UpgradeAlg import UpgradeAlg
-from main import cal_total_distance, num_points, findCorrectPath, column, cal_distance_matrix, read_all_lines
+from main import cal_total_distance,  findCorrectPath, column, cal_distance_matrix, read_all_lines
 
 
 class Ui_MainWindow(object):
@@ -303,10 +303,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pg_calc2(alg.y_best_history)
         return best_points_coordinate
 
-
-
-
-
     def Upload(self):
         mas= self.calcMy()
         best_x = column(mas, 1)
@@ -328,12 +324,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             else:
                 pass
 
-
-
-
     def calcCommon(self):
         iter = int(self.input_dp.text())
         pop = int(self.input_PRO.text())
+
         distance_matrix = cal_distance_matrix()
         alg = CommonAlg(func=cal_total_distance, numCity=num_points(), size_pop=pop, max_iter=iter,
                          distance_matrix=distance_matrix)
@@ -360,6 +354,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.graphicsView.clear()
         self.graphicsView.plot(best_x, best_y)
+
+
 
     def pg_calc2(self, x):
         self.graphicsView2.clear()
